@@ -9,7 +9,7 @@ export function BannerPreventa() {
         </h2>
         
         <p className="font-montserrat text-lg text-gray-900 mb-8">
-          Limitado a 500 personas
+          ⚡ Capacidad limitada · Anticipate, evita filas y obtené mejor precio
         </p>
 
         <a

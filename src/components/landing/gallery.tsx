@@ -69,13 +69,16 @@ export function GallerySection() {
               ref={(el) => {
                 if (el) imagesRef.current[index] = el;
               }}
-              className="aspect-square rounded-lg overflow-hidden bg-gray-900 group cursor-pointer"
+              className="aspect-square rounded-lg overflow-hidden bg-gray-900 group cursor-pointer relative"
             >
-              <img
+              <Image
                 src={image.src}
                 alt={image.alt}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 loading="lazy"
+                quality={80}
               />
             </div>
           ))}

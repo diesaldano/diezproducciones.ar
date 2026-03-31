@@ -27,11 +27,14 @@ export function SobreNosotrosSection() {
               <p className="text-lg">
                 Hacemos eventos que <span className="text-amber-500 font-semibold">importan</span>.
               </p>
-              <p>
-                Desde hace años organizamos las mejores experiencias de rock en Argentina. Bandas sin filtro, público apasionado, y un ambiente que te marca para siempre.
+              <p className="text-base">
+                Por detrás de cada show está <span className="text-amber-500 font-semibold">Salamanca Producciones + DIEZ Producciones</span>, dos equipos con experiencia sólida en gestión cultural y producción integral de espectáculos. Trabajamos cada detalle para impulsar propuestas de calidad y fortalecer la escena musical independiente en el norte argentino.
               </p>
-              <p>
-                En esta Preventa vas a encontrar bebidas al mejor precio, sin complicaciones. Solo gente real disfrutando de lo que ama.
+              <p className="text-base">
+                Desde hace años organizamos las mejores experiencias de rock argentino. Bandas sin filtro, público apasionado, y un ambiente que te marca para siempre. Estamos enfocados en hacer de cada evento un momento único que trascienda.
+              </p>
+              <p className="text-base">
+                En esta Preventa vas a encontrar bebidas al mejor precio, sin complicaciones. Solo gente real disfrutando de lo que ama, en el lugar indicado en el momento indicado.
               </p>
             </div>
 

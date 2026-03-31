@@ -4,12 +4,12 @@ import Image from 'next/image';
 
 export function GaleriaSection() {
   const images = [
-    { id: 1, src: '/fotos/foto-promo.jpeg', alt: 'AUTOS ROBADOS - Promo' },
-    { id: 5, src: '/fotos/gallery-cuatro.jpeg', alt: 'AUTOS ROBADOS - Promo' },
-    { id: 2, src: '/fotos/gallery-uno.jpeg', alt: 'AUTOS ROBADOS - Plano General' },
-    { id: 4, src: '/fotos/gallery-tres.jpeg', alt: 'AUTOS ROBADOS - Plano General' },
+    { id: 1, src: '/fotos/foto-promo.jpg', alt: 'AUTOS ROBADOS - Promo' },
+    { id: 5, src: '/fotos/gallery-cuatro.jpg', alt: 'AUTOS ROBADOS - Promo' },
+    { id: 2, src: '/fotos/gallery-uno.jpg', alt: 'AUTOS ROBADOS - Plano General' },
+    { id: 4, src: '/fotos/gallery-tres.jpg', alt: 'AUTOS ROBADOS - Plano General' },
     { id: 3, src: '/fotos/gallery-dos.jpg', alt: 'AUTOS ROBADOS - Promo' },
-    { id: 6, src: '/fotos/gallery-cinco.jpeg', alt: 'AUTOS ROBADOS - Plano General' },
+    { id: 6, src: '/fotos/gallery-cinco.jpg', alt: 'AUTOS ROBADOS - Plano General' },
   ];
 
   return (

@@ -27,15 +27,18 @@ export function BandaSection() {
             </h2>
             
             <div className="space-y-4">
-              <p className="font-montserrat text-lg text-gray-400">
-                Presentación de "El antidoto"
+              <p className="font-montserrat text-amber-500 font-bold text-lg">
+                "El Antídoto" 2026
               </p>
-              <p className="font-montserrat text-lg text-gray-400">
-                La banda que viene de agotar dos shows.
+              <p className="font-montserrat text-base text-gray-300 leading-relaxed">
+                Rock and roll crudo sin concesiones. Guitarras encendidas, melodías directas y la intensidad que define a una de las bandas emergentes con mayor proyección del rock argentino.
               </p>
-              <p className="font-montserrat text-lg text-gray-400">
-                ¡No te quedes afuera! Consegui tu entrada aqui.
-              </p>
+              <div className="text-sm text-gray-400 space-y-1 pt-2">
+                <p><span className="text-amber-500">Federico Soto</span> • voz y guitarra</p>
+                <p><span className="text-amber-500">Lucas Ramos</span> • bajo y coros</p>
+                <p><span className="text-amber-500">Emmanuel Baldovino</span> • batería</p>
+                <p><span className="text-amber-500">Nicolás Ruiz</span> • guitarra y coros</p>
+              </div>
             </div>
 
             {/* Social Links */}

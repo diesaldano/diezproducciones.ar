@@ -47,8 +47,6 @@ export function useLazyAnimations() {
 
         requestAnimationFrame(raf);
         gsapLoaded = true;
-
-        console.log('[Lazy] GSAP + Lenis cargados exitosamente');
       } catch (error) {
         console.error('[Lazy] Error cargando librerías de animación:', error);
         // NO FALLA - la página funciona sin animations

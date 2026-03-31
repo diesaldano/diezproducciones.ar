@@ -48,6 +48,10 @@ next-env.d.ts
 *.ps1
 
 # IDE
+
+# Review & notes
+note.txt
+*.review
 .vscode/
 .idea/
 

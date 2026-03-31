@@ -1,33 +1,36 @@
 'use client';
+import { config } from '@/lib/config';
 
 export function InfoEventoSection() {
   const info = [
     {
       icon: '📍',
       title: 'LOCACIÓN',
-      content: ['Rivadavia 13200', 'Diva Rock, Barrio Norte'],
+      content: ['Rivadavia 1320', 'Diva Rock, Barrio Norte'],
       link: 'VER EN MAPA',
       href: 'https://maps.app.goo.gl/o2PzfRmFsu99Vna49',
+      target: '_blank',
     },
     {
       icon: '🎫',
       title: 'FECHA',
-      content: ['Viernes, 24 abril', '21:00 HS'],
+      content: ['Viernes, 24 de abril', '21:00 HS'],
       link: 'Info',
     },
     {
       icon: '🎟️',
       title: 'ENTRADA',
-      content: ['$25000', 'Capacidad limitada'],
+      content: ['$25.000', 'Capacidad limitada'],
       link: 'COMPRAR',
-      href: '/checkout',
+      href: config.preventaUrl,
+      target: '_blank',
     },
     {
       icon: '📞',
       title: 'CONTACTO',
-      content: ['diezproducciones.arg@gmail.com', 'mail'],
+      content: ['diezproducciones.arg@gmail.com', 'salamanca.prod.tuc@gmail.com'],
       link: 'ESCRIBIR',
-      href: '#',
+      href: 'mailto:diezproducciones.arg@gmail.com?cc=salamanca.prod.tuc@gmail.com&subject=Consulta%20AUTOS%20ROBADOS%20Tucumán',
     },
   ];
 
@@ -47,24 +50,24 @@ export function InfoEventoSection() {
           {info.map((item, idx) => (
             <div
               key={idx}
-              className="group bg-gray-900/50 backdrop-blur-sm p-4 sm:p-6 rounded-lg border border-gray-800 hover:bg-gray-900 hover:border-amber-500/80 transition-all duration-300 flex flex-col h-full"
+              className="group bg-gray-900/50 backdrop-blur-sm p-8 sm:p-10 lg:p-12 rounded-lg border border-gray-800 hover:bg-gray-900 hover:border-amber-500/80 transition-all duration-300 flex flex-col h-full"
             >
               {/* Icon */}
-              <div className="text-3xl sm:text-5xl mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300">
+              <div className="text-5xl sm:text-6xl md:text-7xl mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
                 {item.icon}
               </div>
 
               {/* Title */}
-              <h3 className="font-montserrat font-semibold text-amber-500 text-xs sm:text-sm tracking-widest mb-3 sm:mb-4 uppercase">
+              <h3 className="font-montserrat font-semibold text-amber-500 text-sm sm:text-base md:text-lg tracking-widest mb-4 sm:mb-6 uppercase">
                 {item.title}
               </h3>
 
               {/* Content */}
-              <div className="space-y-1 sm:space-y-2 mb-4 sm:mb-6 flex-grow">
+              <div className="space-y-2 sm:space-y-3 mb-6 sm:mb-8 flex-grow">
                 {item.content.map((line, i) => (
                   <p
                     key={i}
-                    className="font-montserrat text-xs sm:text-sm text-gray-300 leading-tight sm:leading-relaxed break-words"
+                    className="font-montserrat text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed break-words"
                   >
                     {line}
                   </p>
@@ -75,7 +78,9 @@ export function InfoEventoSection() {
               {item.href && (
                 <a
                   href={item.href}
-                  className="inline-flex items-center gap-2 font-montserrat font-semibold text-xs sm:text-sm text-amber-500 hover:text-amber-400 group/link transition-colors duration-300 mt-auto"
+                  target={item.target || '_self'}
+                  rel={item.target === '_blank' ? 'noopener noreferrer' : undefined}
+                  className="inline-flex items-center gap-2 font-montserrat font-semibold text-sm sm:text-base md:text-lg text-amber-500 hover:text-amber-400 group/link transition-colors duration-300 mt-auto"
                 >
                   <span>{item.link}</span>
                   <span className="group-hover/link:translate-x-1 transition-transform duration-300">→</span>

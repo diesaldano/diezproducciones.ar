@@ -1,6 +1,7 @@
 'use client';
 
 import { useTheme } from '@/lib/theme-context';
+import Image from 'next/image';
 
 interface BrandHeaderProps {
   event?: string;
@@ -30,9 +31,11 @@ export function BrandHeader({
                 {/* Logos - Always white */}
                 <div className="flex items-center gap-2">
                   {/* Diez Logo - Más grande */}
-                  <img
+                  <Image
                     src="/diezb.png"
                     alt="Diez Producciones"
+                    width={128}
+                    height={128}
                     className="w-24 h-24 md:w-32 md:h-32 object-contain flex-shrink-0"
                   />
                   
@@ -42,9 +45,11 @@ export function BrandHeader({
                   }`} />
                   
                   {/* Salamanca Logo */}
-                  <img
+                  <Image
                     src="/salamancab.png"
                     alt="Salamanca"
+                    width={80}
+                    height={80}
                     className="w-16 h-16 md:w-20 md:h-20 object-contain flex-shrink-0"
                   />
                 </div>

@@ -67,8 +67,6 @@ const GSAPLoader = {
       // Make available globally for animations
       (window as any).gsap = gsapModule;
       (window as any).ScrollTrigger = ScrollTrigger;
-
-      console.log('[GSAP] Loaded successfully');
     } catch (error) {
       console.error('[GSAP] Failed to load:', error);
     }
@@ -113,8 +111,6 @@ const LenisLoader = {
 
         // Store globally
         (window as any).lenisInstance = lenisInstance;
-
-        console.log('[Lenis] Loaded successfully');
       }
     } catch (error) {
       console.error('[Lenis] Failed to load:', error);

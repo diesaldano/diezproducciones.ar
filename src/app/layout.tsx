@@ -9,6 +9,7 @@ const bebasNeue = Bebas_Neue({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-bebas",
+  preload: true, // ✅ Preload hero font
 });
 
 const montserrat = Montserrat({
@@ -108,9 +109,22 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <link rel="canonical" href="https://diezproducciones.ar" />
         <link rel="icon" href="/favicon.svg" />
-        {/* Preconnect to Google Fonts (already using next/font, but good practice) */}
+        
+        {/* ✅ PHASE 2: Font & Resource Optimization */}
+        {/* Preconnect to Google Fonts */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        
+        {/* Prefetch critical libraries */}
+        <link rel="prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" as="script" />
+        <link rel="prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" as="script" />
+        
+        {/* Prefetch hero video poster for better perceived performance */}
+        <link rel="prefetch" href="/video/hero-fallback.jpg" as="image" imageSrcSet="/video/hero-fallback.jpg" />
+        
+        {/* DNS prefetch for external resources */}
+        <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+        <link rel="dns-prefetch" href="https://supabase.co" />
         {/* Schema.org structured data for Event */}
         <script
           type="application/ld+json"
