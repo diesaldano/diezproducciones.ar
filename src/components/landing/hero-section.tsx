@@ -1,19 +1,54 @@
 'use client';
 
 import { config } from '@/lib/config';
+import { useEffect, useRef } from 'react';
 
 export function HeroSection() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Intersection Observer: Play video solo cuando hero es visible
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && videoRef.current) {
+            videoRef.current.play().catch(() => {
+              // Fallback: autoPlay puede fallar en algunos navegadores
+            });
+          } else if (videoRef.current) {
+            videoRef.current.pause();
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-black">
+    <section 
+      ref={containerRef}
+      className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-black"
+    >
       {/* Video Background */}
       <div className="absolute inset-0 w-full h-full">
         <video
-          autoPlay
+          ref={videoRef}
           muted
           loop
           className="w-full h-full object-cover"
           playsInline
-          preload="metadata"
+          preload="none"
           poster="/fotos/foto-promo.jpg"
         >
           <source src={config.heroVideoUrl} type="video/mp4" />

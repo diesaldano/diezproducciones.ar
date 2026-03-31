@@ -79,6 +79,8 @@ export function GallerySection() {
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 loading="lazy"
                 quality={80}
+                placeholder="blur"
+                blurDataURL="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect fill='%23222' width='400' height='400'/%3E%3C/svg%3E"
               />
             </div>
           ))}
