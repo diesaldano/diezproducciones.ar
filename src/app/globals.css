@@ -41,6 +41,7 @@ html.light {
 
 html {
   transition: background 0.3s ease, color 0.3s ease;
+  scroll-behavior: smooth;
 }
 
 html.dark {
@@ -229,5 +230,146 @@ img {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* MOBILE ENHANCEMENTS - SPACING & HOVER OPTIMIZATION */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* OPTIMIZE SPACING ON SMALL SCREENS */
+@media (max-width: 640px) {
+  /* Reduce padding/margins on mobile */
+  body {
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 1.875rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
+
+  /* Reduce section padding */
+  section {
+    padding: 1.5rem;
+  }
+
+  /* Optimize button padding */
+  button {
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  /* Better touch spacing */
+  a {
+    padding: 0.5rem;
+  }
+
+  /* Reduce gap in flex containers */
+  .gap-4 {
+    gap: 0.75rem;
+  }
+
+  .gap-6 {
+    gap: 1rem;
+  }
+
+  .gap-8 {
+    gap: 1.25rem;
+  }
+}
+
+/* REMOVE HOVER EFFECTS ON TOUCH DEVICES */
+@media (hover: none) and (pointer: coarse) {
+  /* Touch devices - disable hover effects */
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    transition: none;
+  }
+
+  button:hover,
+  a:hover {
+    background-color: inherit;
+    color: inherit;
+  }
+
+  /* Remove all hover-based visual feedback on touch */
+  button:hover::after,
+  a:hover::after {
+    display: none;
+  }
+
+  /* Disable scale on hover for touch */
+  .hover\:scale-105:hover {
+    transform: none !important;
+  }
+
+  .hover\:scale-110:hover {
+    transform: none !important;
+  }
+}
+
+/* KEEP HOVER EFFECTS ON DESKTOP ONLY */
+@media (hover: hover) and (pointer: fine) {
+  /* Desktop devices - keep hover effects */
+  button,
+  a {
+    transition: all 0.2s ease-in-out;
+  }
+
+  button:hover {
+    transform: translateY(-2px);
+  }
+
+  a:hover {
+    opacity: 0.8;
+  }
+}
+
+/* OPTIMIZE INTERACTIVE ELEMENTS FOR MOBILE */
+@media (max-width: 768px) {
+  /* Increase touch target areas further on small screens */
+  button,
+  a[role="button"],
+  .btn {
+    min-height: 48px;
+    min-width: 48px;
+    padding: 0.75rem;
+  }
+
+  /* Remove active state flicker on mobile */
+  button:active,
+  a:active {
+    outline: none;
+  }
+
+  /* Optimize form inputs for mobile */
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea,
+  select {
+    font-size: 16px; /* Prevents zoom on iOS */
+    min-height: 48px;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+  }
+
+  /* Disable text selection on long press for mobile */
+  button,
+  a[role="button"] {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
   }
 }

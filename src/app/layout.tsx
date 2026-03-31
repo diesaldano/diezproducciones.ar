@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Bebas_Neue, Montserrat } from "next/font/google";
 import { ThemeProvider } from "@/lib/theme-context";
+import { BackToTop } from "@/components/back-to-top";
 import "./globals.css";
 
 // Optimize fonts with next/font
@@ -183,6 +184,7 @@ export default function RootLayout({
       <body className="antialiased">
         <ThemeProvider>
           {children}
+          <BackToTop />
         </ThemeProvider>
       </body>
     </html>

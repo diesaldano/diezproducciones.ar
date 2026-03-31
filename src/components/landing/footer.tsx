@@ -6,14 +6,14 @@ export function LandingFooter() {
   return (
     <footer className="w-full bg-black border-t border-gray-800 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        {/* Logos - Horizontal aligned */}
+        {/* Logos - Horizontal aligned equally */}
         <div className="flex items-center justify-center gap-12 mb-12">
-          <div className="relative w-20 h-20 flex-shrink-0">
+          <div className="relative w-24 h-24 flex-shrink-0">
             <Image
               src="/diezb.png"
               alt="Diez Producciones"
-              width={80}
-              height={80}
+              width={96}
+              height={96}
               quality={90}
               className="object-contain brightness-0 invert"
             />
