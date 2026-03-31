@@ -80,7 +80,8 @@ export function InfoEventoSection() {
                   href={item.href}
                   target={item.target || '_self'}
                   rel={item.target === '_blank' ? 'noopener noreferrer' : undefined}
-                  className="inline-flex items-center gap-2 font-montserrat font-semibold text-sm sm:text-base md:text-lg text-amber-500 hover:text-amber-400 group/link transition-colors duration-300 mt-auto"
+                  aria-label={`${item.title}: ${item.link}`}
+                  className="inline-flex items-center gap-2 font-montserrat font-semibold text-sm sm:text-base md:text-lg text-amber-500 hover:text-amber-400 group/link transition-colors duration-300 mt-auto focus:outline-none focus:ring-2 focus:ring-amber-500 rounded px-2 py-1"
                 >
                   <span>{item.link}</span>
                   <span className="group-hover/link:translate-x-1 transition-transform duration-300">→</span>

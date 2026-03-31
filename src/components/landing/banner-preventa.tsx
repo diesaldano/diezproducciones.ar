@@ -14,7 +14,8 @@ export function BannerPreventa() {
 
         <a
           href="/checkout"
-          className="inline-block bg-black hover:bg-gray-900 text-amber-500 font-montserrat font-bold py-4 px-10 rounded-lg transition-all duration-200 text-xl"
+          className="inline-block bg-black hover:bg-gray-900 text-amber-500 font-montserrat font-bold py-4 px-10 rounded-lg transition-all duration-200 text-xl focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 focus:ring-offset-amber-600 min-h-12"
+          aria-label="Ir a preventa y compra de entradas + bebidas"
         >
           IR A PREVENTA →
         </a>

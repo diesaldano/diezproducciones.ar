@@ -56,20 +56,21 @@ export function HeroSection() {
         </video>
       </div>
 
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/50" />
+      {/* Dark Overlay - Enhanced contrast for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/60" />
 
       {/* Content */}
       <div className="relative z-10 text-center max-w-4xl px-4">
-        <h1 className="text-6xl sm:text-7xl md:text-8xl font-bold mb-6 text-white drop-shadow-lg">
+        <h1 className="text-6xl sm:text-7xl md:text-8xl font-bold mb-6 text-white drop-shadow-2xl" style={{ textShadow: '0 4px 6px rgba(0,0,0,0.7)' }}>
           AUTOS ROBADOS <br/>EN TUCUMÁN
         </h1>
-        <p className="font-montserrat text-lg sm:text-xl text-gray-200 mb-8 drop-shadow">
+        <p className="font-montserrat text-lg sm:text-xl text-gray-100 mb-8 drop-shadow-lg" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.7)' }}>
           24 de Abril Diva Rock.
         </p>
         <a 
           href={config.preventaUrl}
-          className="inline-block bg-amber-500 hover:bg-amber-600 text-black font-montserrat font-bold py-3 px-8 rounded-lg transition-all duration-200 text-lg"
+          className="inline-block bg-amber-500 hover:bg-amber-600 text-black font-montserrat font-bold py-3 px-8 rounded-lg transition-all duration-200 text-lg min-h-12 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-amber-300 focus:ring-offset-2"
+          aria-label="Ir a preventa de AUTOS ROBADOS en Diva Rock"
         >
           IR A PREVENTA
         </a>
