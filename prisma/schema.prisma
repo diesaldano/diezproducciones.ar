@@ -1,0 +1,93 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+/**
+ * 🎯 LANDING SCHEMA - Solo datos informativos del evento/sitio
+ * 
+ * Estructura mínima pero flexible:
+ * - Config: Datos globales (evento, redes, colores)
+ * - Event: Múltiples eventos (futuro)
+ * - GalleryImage: Imágenes de la galería editorial
+ * 
+ * SIN: productos, pedidos, compras (eso es preventa, en otra BD/schema)
+ */
+
+/**
+ * Configuración global del landing
+ * Un único registro ("default") que controla todo
+ */
+model Config {
+  id              String    @id @default("default")
+  
+  // Información del evento
+  eventName       String    @default("AUTOS ROBADOS")
+  eventDate       DateTime?
+  eventTime       String?   // "21:00"
+  location        String?   // "Córdoba, Argentina"
+  description     String?   // Descripción larga del evento
+  
+  // Links y CTAs
+  ticketUrl       String?   // Link a compra de entradas (futuro)
+  
+  // Redes sociales (band)
+  spotify         String?
+  youtube         String?
+  tiktok          String?
+  instagram       String?
+  
+  // Branding
+  primaryColor    String    @default("#000000")
+  secondaryColor  String    @default("#ffffff")
+  
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  
+  @@map("config")
+}
+
+/**
+ * Eventos (si en futuro hay múltiples eventos)
+ * Por ahora puede estar vacío, es para escalabilidad
+ */
+model Event {
+  id          String      @id @default(uuid())
+  name        String
+  date        DateTime
+  location    String
+  description String?
+  imageUrl    String?
+  
+  published   Boolean     @default(false)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  
+  @@index([published])
+  @@index([date])
+  @@map("events")
+}
+
+/**
+ * Imágenes de galería (editorial grid)
+ * Orden controlado por campo "order"
+ */
+model GalleryImage {
+  id          String      @id @default(uuid())
+  title       String?
+  imageUrl    String      // URL de imagen optimizada
+  alt         String?     // Texto alt para accesibilidad
+  order       Int         @default(0)  // Para ordenar en galería
+  
+  published   Boolean     @default(true)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  
+  @@index([order])
+  @@index([published])
+  @@map("gallery_images")
+}

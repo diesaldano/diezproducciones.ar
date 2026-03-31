@@ -1,0 +1,161 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: var(--background, #000000);
+  --color-foreground: var(--foreground, #f1f5f9);
+  --color-card: var(--card, #0a0a0a);
+  --color-muted: var(--muted, #a1a1a1);
+  --color-line: var(--line, #1a1a1a);
+  --color-brand: var(--brand, #0b5394);
+  --color-brand-dark: var(--brand-dark, #073763);
+  --font-sans: var(--font-montserrat, "Montserrat", sans-serif);
+}
+
+:root {
+  color-scheme: dark;
+  
+  /* Dark Mode (default) */
+  --background: #000000;
+  --foreground: #f1f5f9;
+  --card: #0a0a0a;
+  --muted: #a1a1a1;
+  --line: #1a1a1a;
+  --brand: #0b5394;
+  --brand-dark: #073763;
+  --font-bebas: "Bebas Neue", sans-serif;
+  --font-montserrat: "Montserrat", sans-serif;
+}
+
+html.light {
+  color-scheme: light;
+  
+  /* Light Mode */
+  --background: #ffffff;
+  --foreground: #1a1a1a;
+  --card: #ffffff;
+  --muted: #666666;
+  --line: #e0e0e0;
+  --brand: #0b5394;
+  --brand-dark: #073763;
+}
+
+html {
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+html.dark {
+  background: linear-gradient(to right, #000000, #000000);
+  color: #f1f5f9;
+}
+
+html.light {
+  background: linear-gradient(135deg, #ffffff 0%, #f0f4f8 100%);
+  color: #1a1a1a;
+}
+
+body {
+  font-family: var(--font-montserrat), sans-serif;
+  min-height: 100vh;
+}
+
+html {
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+html.dark {
+  background: linear-gradient(to right, #000000, #000000);
+  color: #f1f5f9;
+}
+
+html.light {
+  background: linear-gradient(135deg, #ffffff 0%, #f0f4f8 100%);
+  color: #1a1a1a;
+}
+
+body {
+  font-family: var(--font-montserrat), sans-serif;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-bebas), sans-serif;
+  letter-spacing: 0.05em;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html.light ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.3);
+  border-radius: 3px;
+}
+
+html.light ::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.5);
+}
+
+html.light ::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Video Background Optimization */
+video {
+  /* Optimize video rendering */
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Hero video specific optimizations */
+[data-video-container] video {
+  /* GPU acceleration */
+  transform: translate3d(0, 0, 0);
+  
+  /* Prevent stretching on mobile */
+  min-width: 100%;
+  min-height: 100%;
+  
+  /* Smooth playback */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Mobile video optimization */
+@media (max-width: 768px) {
+  [data-video-container] video {
+    /* Reduce quality on mobile for performance */
+    filter: brightness(0.95);
+  }
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  video {
+    animation: none !important;
+  }
+}
