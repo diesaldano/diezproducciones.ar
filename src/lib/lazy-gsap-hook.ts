@@ -68,7 +68,7 @@ const GSAPLoader = {
       (window as any).gsap = gsapModule;
       (window as any).ScrollTrigger = ScrollTrigger;
     } catch (error) {
-      console.error('[GSAP] Failed to load:', error);
+      // console.error('[GSAP] Failed to load:', error);
     }
   },
 };
@@ -113,7 +113,7 @@ const LenisLoader = {
         (window as any).lenisInstance = lenisInstance;
       }
     } catch (error) {
-      console.error('[Lenis] Failed to load:', error);
+      // console.error('[Lenis] Failed to load:', error);
     }
   },
 };
