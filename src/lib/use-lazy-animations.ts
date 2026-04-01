@@ -48,7 +48,7 @@ export function useLazyAnimations() {
         requestAnimationFrame(raf);
         gsapLoaded = true;
       } catch (error) {
-        console.error('[Lazy] Error cargando librerías de animación:', error);
+        // console.error('[Lazy] Error cargando librerías de animación:', error);
         // NO FALLA - la página funciona sin animations
       }
     }
