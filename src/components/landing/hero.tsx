@@ -93,11 +93,11 @@ export function HeroSection() {
           loop
           playsInline
           preload="none"
-          poster="/video/hero-fallback.jpg"
+          poster="/fotos/foto-promo.jpg"
           className="absolute inset-0 w-full h-full object-cover"
           style={{
             // Fallback background image from CSS
-            backgroundImage: 'url(/video/hero-fallback.jpg)',
+            backgroundImage: 'url(/fotos/foto-promo.jpg)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
