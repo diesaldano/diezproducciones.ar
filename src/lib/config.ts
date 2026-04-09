@@ -4,8 +4,8 @@
 
 const PREVENTA_URLS = {
   development: 'http://localhost:3001',
-  production: process.env.NEXT_PUBLIC_PREVENTA_URL || 'https://preventa.autosrobados.com',
-  staging: process.env.NEXT_PUBLIC_PREVENTA_URL || 'https://staging-preventa.autosrobados.com',
+  production: process.env.NEXT_PUBLIC_PREVENTA_URL || 'https://preventa.diezproducciones.ar',
+  staging: process.env.NEXT_PUBLIC_PREVENTA_URL || 'https://staging-preventa.diezproducciones.ar',
 };
 
 export const config = {
