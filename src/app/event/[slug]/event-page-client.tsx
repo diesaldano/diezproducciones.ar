@@ -44,6 +44,7 @@ export function EventPageClient({ event }: EventPageClientProps) {
   const dateStr = new Date(event.date).toLocaleDateString('es-AR', {
     day: 'numeric',
     month: 'long',
+    timeZone: 'America/Argentina/Buenos_Aires',
   });
 
   return (

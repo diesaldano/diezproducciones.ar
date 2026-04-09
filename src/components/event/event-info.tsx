@@ -22,11 +22,12 @@ function formatDate(isoDate: string): string {
     weekday: 'long',
     day: 'numeric',
     month: 'long',
+    timeZone: 'America/Argentina/Buenos_Aires',
   }).replace(/^\w/, (c) => c.toUpperCase());
 }
 
-function formatPrice(cents: number): string {
-  return `$${cents.toLocaleString('es-AR')}`;
+function formatPrice(price: number): string {
+  return `$${price.toLocaleString('es-AR')}`;
 }
 
 export function EventInfo({ event, contactEmails = [] }: EventInfoProps) {
