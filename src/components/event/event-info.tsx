@@ -22,11 +22,12 @@ function formatDate(isoDate: string): string {
     weekday: 'long',
     day: 'numeric',
     month: 'long',
+    timeZone: 'America/Argentina/Buenos_Aires',
   }).replace(/^\w/, (c) => c.toUpperCase());
 }
 
-function formatPrice(cents: number): string {
-  return `$${cents.toLocaleString('es-AR')}`;
+function formatPrice(price: number): string {
+  return `$${price.toLocaleString('es-AR')}`;
 }
 
 export function EventInfo({ event, contactEmails = [] }: EventInfoProps) {
@@ -51,8 +52,8 @@ export function EventInfo({ event, contactEmails = [] }: EventInfoProps) {
 
   // Price
   const priceContent: string[] = [];
-  if (event.pricePreventa) priceContent.push(formatPrice(event.pricePreventa));
-  else if (event.priceGeneral) priceContent.push(formatPrice(event.priceGeneral));
+  if (event.pricePreventa != null) priceContent.push(formatPrice(event.pricePreventa));
+  else if (event.priceGeneral != null) priceContent.push(formatPrice(event.priceGeneral));
   if (event.details?.capacity) priceContent.push(`Capacidad: ${event.details.capacity}`);
   if (priceContent.length > 0) {
     items.push({
