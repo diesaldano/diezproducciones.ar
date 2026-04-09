@@ -1,15 +1,5 @@
 'use client';
 
-import { GoogleAnalytics } from '@next/third-parties/google';
-
-interface GTMProps {
-  gtmId: string;
-}
-
-export function GTM({ gtmId }: GTMProps) {
-  return <GoogleAnalytics gaId={gtmId} />;
-}
-
 /**
  * Track custom events
  * Usage: trackEvent('event_name', { param: 'value' })

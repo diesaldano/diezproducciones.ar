@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Bebas_Neue, Montserrat } from "next/font/google";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { GoogleTagManager } from "@next/third-parties/google";
 import { ThemeProvider } from "@/lib/theme-context";
 import { BackToTop } from "@/components/back-to-top";
 import "./globals.css";
@@ -108,7 +108,7 @@ export default function RootLayout({
       <head>
         {/* Google Tag Manager */}
         {process.env.NEXT_PUBLIC_GTM_ID && (
-          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GTM_ID} />
+          <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
         )}
         
         <meta name="theme-color" content="#000000" />
