@@ -52,42 +52,187 @@ model Config {
 }
 
 /**
- * Eventos (si en futuro hay múltiples eventos)
- * Por ahora puede estar vacío, es para escalabilidad
+ * Eventos - Información completa de cada evento
+ * Soporta múltiples eventos con precios diferenciados
  */
 model Event {
-  id          String      @id @default(uuid())
-  name        String
-  date        DateTime
-  location    String
-  description String?
-  imageUrl    String?
-  
-  published   Boolean     @default(false)
-  createdAt   DateTime    @default(now())
-  updatedAt   DateTime    @updatedAt
-  
+  id            String         @id @default(uuid())
+  name          String         // "AUTOS ROBADOS EN TUCUMÁN"
+  slug          String         @unique // "autos-robados-tucuman-2026"
+  date          DateTime
+  location      String         // "Diva Rock, Barrio Norte"
+  address       String?        // "Rivadavia 1320"
+  description   String?
+  imageUrl      String?        // Imagen de portada del evento
+  priceGeneral  Int?           // Precio entrada general (en centavos o enteros)
+  priceVip      Int?           // Precio entrada VIP
+  pricePreventa Int?           // Precio preventa
+
+  published     Boolean        @default(false)
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+
+  // Relaciones
+  bands         BandEvent[]
+  gallery       GalleryImage[]
+  drinks        Drink[]
+  details       EventDetails?
+
   @@index([published])
   @@index([date])
+  @@index([slug])
   @@map("events")
 }
 
 /**
+ * Bandas - Información de cada banda/artista
+ * Nombre, bio, integrantes y redes sociales
+ */
+model Band {
+  id          String       @id @default(uuid())
+  name        String       // "Autos Robados"
+  slug        String       @unique // "autos-robados"
+  bio         String?      // Descripción/biografía de la banda
+  imageUrl    String?      // Foto principal de la banda
+  genre       String?      // "Rock"
+
+  // Redes sociales
+  spotify     String?
+  youtube     String?
+  instagram   String?
+  tiktok      String?
+  website     String?
+
+  published   Boolean      @default(true)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  // Relaciones
+  members     BandMember[]
+  events      BandEvent[]
+
+  @@index([slug])
+  @@index([published])
+  @@map("bands")
+}
+
+/**
+ * Integrantes de banda
+ * Cada miembro con su rol/instrumento
+ */
+model BandMember {
+  id          String   @id @default(uuid())
+  name        String   // "Federico Soto"
+  role        String   // "voz y guitarra"
+  imageUrl    String?
+  order       Int      @default(0) // Orden de aparición
+
+  bandId      String
+  band        Band     @relation(fields: [bandId], references: [id], onDelete: Cascade)
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([bandId])
+  @@index([order])
+  @@map("band_members")
+}
+
+/**
+ * Relación muchos-a-muchos entre Bandas y Eventos
+ * Permite que un evento tenga múltiples bandas y viceversa
+ */
+model BandEvent {
+  id        String   @id @default(uuid())
+  bandId    String
+  eventId   String
+  order     Int      @default(0) // Orden de aparición en el lineup
+  isHeadliner Boolean @default(false)
+
+  band      Band     @relation(fields: [bandId], references: [id], onDelete: Cascade)
+  event     Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@unique([bandId, eventId])
+  @@index([eventId])
+  @@index([bandId])
+  @@map("band_events")
+}
+
+/**
  * Imágenes de galería (editorial grid)
- * Orden controlado por campo "order"
+ * Vinculadas opcionalmente a un evento
  */
 model GalleryImage {
-  id          String      @id @default(uuid())
+  id          String   @id @default(uuid())
   title       String?
-  imageUrl    String      // URL de imagen optimizada
-  alt         String?     // Texto alt para accesibilidad
-  order       Int         @default(0)  // Para ordenar en galería
-  
-  published   Boolean     @default(true)
-  createdAt   DateTime    @default(now())
-  updatedAt   DateTime    @updatedAt
-  
+  imageUrl    String   // URL de imagen optimizada
+  alt         String?  // Texto alt para accesibilidad
+  order       Int      @default(0) // Para ordenar en galería
+  category    String?  // "promo", "live", "backstage"
+
+  eventId     String?
+  event       Event?   @relation(fields: [eventId], references: [id], onDelete: SetNull)
+
+  published   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
   @@index([order])
   @@index([published])
+  @@index([eventId])
   @@map("gallery_images")
+}
+
+/**
+ * Bebidas en preventa
+ * Productos disponibles para compra anticipada por evento
+ */
+model Drink {
+  id          String   @id @default(uuid())
+  name        String   // "Cerveza Quilmes"
+  description String?  // "Lata 473ml"
+  price       Int      // Precio en pesos (entero)
+  category    String?  // "cerveza", "fernet", "gaseosa", "combo"
+  imageUrl    String?
+  stock       Int      @default(0)
+  available   Boolean  @default(true)
+
+  eventId     String?
+  event       Event?   @relation(fields: [eventId], references: [id], onDelete: SetNull)
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([eventId])
+  @@index([category])
+  @@index([available])
+  @@map("drinks")
+}
+
+/**
+ * Detalles extendidos del evento
+ * Horarios, capacidad, restricciones, etc.
+ * Relación 1:1 con Event
+ */
+model EventDetails {
+  id              String   @id @default(uuid())
+  doorsOpen       String?  // "20:00" - Apertura de puertas
+  showStart       String?  // "21:00" - Inicio del show
+  showEnd         String?  // "23:59" - Fin estimado
+  capacity        Int?     // Capacidad máxima del venue
+  ageRestriction  String?  // "+18", "ATP"
+  dressCode       String?  // Código de vestimenta
+  parkingInfo     String?  // Info de estacionamiento
+  mapUrl          String?  // Link a Google Maps
+  notes           String?  // Notas adicionales
+
+  eventId         String   @unique
+  event           Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@map("event_details")
 }
