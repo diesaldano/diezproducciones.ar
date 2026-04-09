@@ -6,9 +6,9 @@ import Link from 'next/link';
 import type { EventData } from '@/lib/types';
 import { EventForm } from '@/components/admin/event-form';
 import { GalleryManager } from '@/components/admin/gallery-manager';
-import { DrinksManager } from '@/components/admin/drinks-manager';
+// import { DrinksManager } from '@/components/admin/drinks-manager'; // Oculto - Bebidas manejadas en Preventa
 
-type TabId = 'details' | 'gallery' | 'drinks';
+type TabId = 'details' | 'gallery'; // Removido 'drinks' - Bebidas en Preventa
 
 export default function EditEventPage() {
   const params = useParams();
@@ -67,7 +67,7 @@ export default function EditEventPage() {
   const tabs: { id: TabId; label: string; count?: number }[] = [
     { id: 'details', label: 'Detalles' },
     { id: 'gallery', label: 'Galería', count: event.gallery.length },
-    { id: 'drinks', label: 'Bebidas', count: event.drinks.length },
+    // { id: 'drinks', label: 'Bebidas', count: event.drinks.length }, // Oculto - Bebidas en Preventa
   ];
 
   return (
@@ -122,11 +122,12 @@ export default function EditEventPage() {
         </section>
       )}
 
-      {activeTab === 'drinks' && (
+      {/* Bebidas manejadas en Preventa - Oculto del admin de landing */}
+      {/* {activeTab === 'drinks' && (
         <section className="bg-zinc-900 border border-zinc-800 rounded-xl p-6">
           <DrinksManager eventId={eventId} drinks={event.drinks} onUpdate={fetchEvent} />
         </section>
-      )}
+      )} */}
     </div>
   );
 }
