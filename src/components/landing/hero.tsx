@@ -2,13 +2,13 @@
 
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
-import Link from 'next/link';
+import { config } from '@/lib/config';
 
 export function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
-  const ctaRef = useRef<HTMLButtonElement>(null);
+  const ctaRef = useRef<HTMLAnchorElement>(null);
   const [videoReady, setVideoReady] = useState(false);
 
   useEffect(() => {
@@ -128,14 +128,13 @@ export function HeroSection() {
           Sonido crudo. Sin filtro. Envidia en vivo.
         </p>
 
-        <Link href="/checkout">
-          <button
-            ref={ctaRef}
-            className="bg-amber-500 hover:bg-amber-600 active:bg-amber-700 text-slate-950 font-montserrat font-bold py-3 sm:py-4 px-8 sm:px-10 rounded-lg transition-all duration-200 hover:scale-105 active:scale-95 text-base sm:text-lg drop-shadow-lg"
-          >
-            COMPRAR BEBIDAS
-          </button>
-        </Link>
+        <a
+          href={config.preventaUrl}
+          ref={ctaRef}
+          className="inline-block bg-amber-500 hover:bg-amber-600 active:bg-amber-700 text-slate-950 font-montserrat font-bold py-3 sm:py-4 px-8 sm:px-10 rounded-lg transition-all duration-200 hover:scale-105 active:scale-95 text-base sm:text-lg drop-shadow-lg"
+        >
+          COMPRAR BEBIDAS
+        </a>
       </div>
     </div>
   );
