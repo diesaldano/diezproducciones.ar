@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 
 type EventHeroProps = {
   eventName: string;
@@ -43,9 +44,7 @@ export function EventHero({
     }
 
     return () => {
-      if (containerRef.current) {
-        observer.unobserve(containerRef.current);
-      }
+      observer.disconnect();
     };
   }, [videoUrl]);
 
@@ -69,9 +68,14 @@ export function EventHero({
             <source src={videoUrl} type="video/mp4" />
           </video>
         ) : posterUrl ? (
-          <div
-            className="w-full h-full bg-cover bg-center"
-            style={{ backgroundImage: `url(${posterUrl})` }}
+          <Image
+            src={posterUrl}
+            alt={eventName}
+            fill
+            sizes="100vw"
+            quality={85}
+            priority
+            className="object-cover"
           />
         ) : null}
       </div>

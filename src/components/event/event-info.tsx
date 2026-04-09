@@ -72,7 +72,7 @@ export function EventInfo({ event, contactEmails = [] }: EventInfoProps) {
       title: 'CONTACTO',
       content: contactEmails,
       link: 'ESCRIBIR',
-      href: `mailto:${contactEmails[0]}${contactEmails.length > 1 ? `?cc=${contactEmails.slice(1).join(',')}` : ''}&subject=Consulta%20Evento`,
+      href: `mailto:${contactEmails[0]}${contactEmails.length > 1 ? `?cc=${contactEmails.slice(1).join(',')}&` : '?'}subject=Consulta%20Evento`,
     });
   }
 
