@@ -51,8 +51,8 @@ export function EventInfo({ event, contactEmails = [] }: EventInfoProps) {
 
   // Price
   const priceContent: string[] = [];
-  if (event.pricePreventa) priceContent.push(formatPrice(event.pricePreventa));
-  else if (event.priceGeneral) priceContent.push(formatPrice(event.priceGeneral));
+  if (event.pricePreventa != null) priceContent.push(formatPrice(event.pricePreventa));
+  else if (event.priceGeneral != null) priceContent.push(formatPrice(event.priceGeneral));
   if (event.details?.capacity) priceContent.push(`Capacidad: ${event.details.capacity}`);
   if (priceContent.length > 0) {
     items.push({
