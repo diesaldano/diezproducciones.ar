@@ -1,5 +1,7 @@
 'use client';
 
+import { config } from '@/lib/config';
+
 export function BannerPreventa() {
   return (
     <section className="w-full bg-gradient-to-r from-amber-600 to-amber-500 py-16 md:py-24">
@@ -13,7 +15,7 @@ export function BannerPreventa() {
         </p>
 
         <a
-          href="/checkout"
+          href={config.preventaUrl}
           className="inline-block bg-black hover:bg-gray-900 text-amber-500 font-montserrat font-bold py-4 px-10 rounded-lg transition-all duration-200 text-xl focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 focus:ring-offset-amber-600 min-h-12"
           aria-label="Ir a preventa y compra de entradas + bebidas"
         >

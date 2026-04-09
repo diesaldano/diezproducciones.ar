@@ -3,8 +3,8 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import { config } from '@/lib/config';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -46,12 +46,15 @@ export function PreventaBannerSection() {
           Capacidad limitada • Anticipate y compra a mejor precio
         </p>
 
-        <Link href="www.localhost:3001/checkout">
-          <button className="bg-black hover:bg-gray-900 text-amber-400 font-bold py-4 px-8 rounded-lg transition-all duration-300 hover:scale-105 active:scale-95 text-lg flex items-center gap-2 mx-auto">
+        <a 
+          href={config.preventaUrl}
+          className="inline-block bg-black hover:bg-gray-900 text-amber-400 font-bold py-4 px-8 rounded-lg transition-all duration-300 hover:scale-105 active:scale-95 text-lg mx-auto"
+        >
+          <span className="flex items-center gap-2">
             IR A PREVENTA
             <ArrowRight size={24} />
-          </button>
-        </Link>
+          </span>
+        </a>
       </div>
     </div>
   );

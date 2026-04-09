@@ -154,7 +154,7 @@ export default function RootLayout({
               },
               offers: {
                 "@type": "Offer",
-                url: "https://diezproducciones.ar/checkout",
+                url: "https://preventa.diezproducciones.ar",
                 availability: "https://schema.org/PreOrder",
                 priceCurrency: "ARS",
                 price: "25000",

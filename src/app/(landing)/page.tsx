@@ -8,6 +8,7 @@ import { GaleriaSection } from '@/components/landing/galeria-section';
 import { BannerPreventa } from '@/components/landing/banner-preventa';
 import { SobreNosotrosSection } from '@/components/landing/sobre-nosotros-section';
 import { InfoEventoSection } from '@/components/landing/info-evento-section';
+import { CountdownSection } from '@/components/landing/countdown-section';
 import { LandingFooter } from '@/components/landing/footer';
 
 export default function LandingPage() {
@@ -50,6 +51,9 @@ export default function LandingPage() {
 
       {/* Banner Preventa */}
       <BannerPreventa />
+
+      {/* Countdown Section */}
+      <CountdownSection />
 
       {/* Sobre Nosotros */}
       <SobreNosotrosSection />
