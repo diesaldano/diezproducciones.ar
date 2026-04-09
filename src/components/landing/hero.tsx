@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { config } from '@/lib/config';
+import { trackCtaClick } from '@/lib/gtm';
 
 export function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -131,6 +132,7 @@ export function HeroSection() {
         <a
           href={config.preventaUrl}
           ref={ctaRef}
+          onClick={() => trackCtaClick('hero_cta', 'comprar_bebidas')}
           className="inline-block bg-amber-500 hover:bg-amber-600 active:bg-amber-700 text-slate-950 font-montserrat font-bold py-3 sm:py-4 px-8 sm:px-10 rounded-lg transition-all duration-200 hover:scale-105 active:scale-95 text-base sm:text-lg drop-shadow-lg"
         >
           COMPRAR BEBIDAS

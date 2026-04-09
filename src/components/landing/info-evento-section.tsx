@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import { config } from '@/lib/config';
 
 export function InfoEventoSection() {
@@ -12,7 +13,7 @@ export function InfoEventoSection() {
       target: '_blank',
     },
     {
-      icon: '🎫',
+      icon: '/icons/ticket.svg',
       title: 'FECHA',
       content: ['Viernes, 24 de abril', '21:00 HS'],
       link: 'Info',
@@ -53,8 +54,20 @@ export function InfoEventoSection() {
               className="group bg-gray-900/50 backdrop-blur-sm p-8 sm:p-10 lg:p-12 rounded-lg border border-gray-800 hover:bg-gray-900 hover:border-amber-500/80 transition-all duration-300 flex flex-col h-full"
             >
               {/* Icon */}
-              <div className="text-5xl sm:text-6xl md:text-7xl mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
-                {item.icon}
+              <div className="mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 flex items-center justify-center h-20 sm:h-24 md:h-28">
+                {item.icon.startsWith('/') ? (
+                  <Image
+                    src={item.icon}
+                    alt={item.title}
+                    width={80}
+                    height={80}
+                    className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain"
+                  />
+                ) : (
+                  <span className="text-5xl sm:text-6xl md:text-7xl">
+                    {item.icon}
+                  </span>
+                )}
               </div>
 
               {/* Title */}
