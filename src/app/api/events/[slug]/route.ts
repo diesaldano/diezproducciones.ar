@@ -1,23 +1,57 @@
 import { NextResponse } from 'next/server';
-import { getEventBySlug } from '@/lib/mock-data';
+import { prisma } from '@/lib/prisma';
 
 /**
  * GET /api/events/[slug]
- * Returns full event data by slug
+ * Returns full event data with relations (bands, gallery, details)
  */
 export async function GET(
   _request: Request,
   { params }: { params: Promise<{ slug: string }> }
 ) {
-  const { slug } = await params;
-  const event = getEventBySlug(slug);
+  try {
+    const { slug } = await params;
 
-  if (!event) {
+    const event = await prisma.event.findUnique({
+      where: { slug },
+      include: {
+        bands: {
+          include: {
+            band: {
+              include: {
+                members: {
+                  orderBy: { order: 'asc' },
+                },
+              },
+            },
+          },
+          orderBy: { order: 'asc' },
+        },
+        gallery: {
+          where: { published: true },
+          orderBy: { order: 'asc' },
+        },
+        details: true,
+        drinks: {
+          where: { available: true },
+          orderBy: { category: 'asc' },
+        },
+      },
+    });
+
+    if (!event) {
+      return NextResponse.json(
+        { error: 'Evento no encontrado' },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json(event);
+  } catch (error) {
+    console.error('Error fetching event:', error);
     return NextResponse.json(
-      { error: 'Evento no encontrado' },
-      { status: 404 }
+      { error: 'Error al obtener evento' },
+      { status: 500 }
     );
   }
-
-  return NextResponse.json(event);
 }
