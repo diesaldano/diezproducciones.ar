@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 
 const navItems = [
   { href: '/admin', label: 'Dashboard', icon: '📊' },
@@ -20,11 +21,44 @@ export function AdminSidebar() {
   return (
     <aside className="w-64 bg-zinc-900 border-r border-zinc-800 min-h-screen flex flex-col">
       <div className="p-6 border-b border-zinc-800">
-        <Link href="/admin" className="block">
-          <h1 className="text-lg font-bold text-amber-500 font-montserrat">
-            DIEZ PRODUCCIONES
-          </h1>
-          <p className="text-xs text-zinc-500 mt-1">Panel de Administración</p>
+        <Link href="/admin" className="block space-y-3 hover:opacity-80 transition-opacity">
+          {/* Logo - SVG simplista pero profesional */}
+          <div className="flex items-center justify-center mb-4">
+            <div className="relative w-12 h-12">
+              <svg 
+                viewBox="0 0 48 48" 
+                className="w-full h-full"
+                fill="none" 
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                {/* Circle background */}
+                <circle cx="24" cy="24" r="22" stroke="#f59e0b" strokeWidth="2" />
+                {/* "D" letter */}
+                <text 
+                  x="24" 
+                  y="32" 
+                  textAnchor="middle" 
+                  fontSize="28" 
+                  fontWeight="bold" 
+                  fill="#f59e0b"
+                  fontFamily="monospace"
+                >
+                  D
+                </text>
+              </svg>
+            </div>
+          </div>
+          <div>
+            <h1 className="text-lg font-bold text-white font-montserrat text-center">
+              DIEZ
+            </h1>
+            <p className="text-xs text-amber-500/70 text-center font-semibold">
+              PRODUCCIONES
+            </p>
+          </div>
+          <p className="text-xs text-zinc-500 text-center mt-2">
+            Admin Panel
+          </p>
         </Link>
       </div>
 

@@ -1,103 +1,273 @@
 /**
  * 🌱 SEED - Landing Data
  * 
- * Datos de ejemplo para el landing:
+ * Datos completos para el landing AUTOS ROBADOS:
  * - Config global del evento
- * - Galería de imágenes
- * - Eventos (para futuros eventos adicionales)
+ * - Event: AUTOS ROBADOS EN TUCUMÁN
+ * - Band: AUTOS ROBADOS con 4 integrantes
+ * - EventDetails: ubicación, horarios, capacidad
+ * - GalleryImages: 6 fotos reales del landing
  */
 
-import { PrismaClient } from '@prisma/client';
+const { PrismaClient } = require('@prisma/client');
 
 const prisma = new PrismaClient();
 
 async function main() {
-  console.log('🌱 Seeding landing data...');
+  console.log('🌱 Seeding complete landing data...\n');
 
-  // SEED: Configuración global
+  // 1️⃣ SEED: Configuración global
   const config = await prisma.config.upsert({
     where: { id: 'default' },
     update: {},
     create: {
       id: 'default',
       eventName: 'AUTOS ROBADOS',
-      eventDate: new Date('2026-04-24'),
-      eventTime: '22:00',
-      location: 'Tucumán, Argentina',
-      description:
-        'Sonido crudo, sin filtro. Escena independiente que mueve. En vivo: pura energía.',
-      ticketUrl: null, // Agregar cuando haya gateway de pagos
-      spotify: 'https://open.spotify.com/artist/Autosrobados',
-      youtube: 'https://youtube.com/@autosrobados',
+      eventDate: new Date('2026-04-24T21:00:00'),
+      eventTime: '21:00',
+      location: 'Diva Rock, Barrio Norte - Tucumán',
+      description: 'Rock and roll crudo sin concesiones. Guitarras encendidas, melodías directas y la intensidad que define a una de las bandas emergentes con mayor proyección del rock argentino.',
+      ticketUrl: 'https://preventa.diezproducciones.ar',
+      spotify: 'https://open.spotify.com/intl-es/artist/5mTDazgxgE8HYpzPckCwV0',
+      youtube: 'https://www.youtube.com/@autosrobados',
       tiktok: 'https://tiktok.com/@autosrobados',
       instagram: 'https://instagram.com/autosrobados',
       primaryColor: '#000000',
       secondaryColor: '#ffffff',
     },
   });
+  console.log('✅ Config global:', config.eventName);
 
-  console.log('✅ Config:', config.eventName);
+  // 2️⃣ SEED: Banda
+  const band = await prisma.band.upsert({
+    where: { slug: 'autos-robados' },
+    update: {},
+    create: {
+      name: 'AUTOS ROBADOS',
+      slug: 'autos-robados',
+      bio: 'Rock and roll crudo sin concesiones. Guitarras encendidas, melodías directas y la intensidad que define a una de las bandas emergentes con mayor proyección del rock argentino.',
+      imageUrl: '/fotos/foto-promo.jpg',
+      genre: 'Rock',
+      spotify: 'https://open.spotify.com/intl-es/artist/5mTDazgxgE8HYpzPckCwV0',
+      youtube: 'https://www.youtube.com/@autosrobados',
+      instagram: 'https://instagram.com/autosrobados',
+      tiktok: null,
+      website: null,
+      published: true,
+    },
+  });
+  console.log('✅ Band:', band.name);
 
-  // SEED: Imágenes de galería (ejemplo)
-  const galleryImages = await Promise.all([
-    prisma.galleryImage.upsert({
-      where: { id: 'img-1' },
+  // 3️⃣ SEED: Integrantes de la banda
+  const members = await Promise.all([
+    prisma.bandMember.upsert({
+      where: { id: 'member-1-autos' },
       update: {},
       create: {
-        id: 'img-1',
-        title: 'Banda en vivo',
-        imageUrl: 'https://via.placeholder.com/1200x800?text=Banda+Vivo',
-        alt: 'Autos Robados en concierto en vivo',
+        id: 'member-1-autos',
+        name: 'Federico Soto',
+        role: 'voz y guitarra',
+        imageUrl: null,
         order: 1,
-        published: true,
+        bandId: band.id,
       },
     }),
-    prisma.galleryImage.upsert({
-      where: { id: 'img-2' },
+    prisma.bandMember.upsert({
+      where: { id: 'member-2-autos' },
       update: {},
       create: {
-        id: 'img-2',
-        title: 'Público energético',
-        imageUrl: 'https://via.placeholder.com/1200x800?text=Publico',
-        alt: 'Público disfrutando el concierto',
+        id: 'member-2-autos',
+        name: 'Lucas Ramos',
+        role: 'bajo y coros',
+        imageUrl: null,
         order: 2,
-        published: true,
+        bandId: band.id,
       },
     }),
-    prisma.galleryImage.upsert({
-      where: { id: 'img-3' },
+    prisma.bandMember.upsert({
+      where: { id: 'member-3-autos' },
       update: {},
       create: {
-        id: 'img-3',
-        title: 'Detalle de bebidas',
-        imageUrl: 'https://via.placeholder.com/1200x800?text=Bebidas',
-        alt: 'Bebidas frías en el evento',
+        id: 'member-3-autos',
+        name: 'Emmanuel Baldovino',
+        role: 'batería',
+        imageUrl: null,
         order: 3,
-        published: true,
+        bandId: band.id,
       },
     }),
-    prisma.galleryImage.upsert({
-      where: { id: 'img-4' },
+    prisma.bandMember.upsert({
+      where: { id: 'member-4-autos' },
       update: {},
       create: {
-        id: 'img-4',
-        title: 'Momento épico',
-        imageUrl: 'https://via.placeholder.com/1200x800?text=Epico',
-        alt: 'Momento épico del concierto',
+        id: 'member-4-autos',
+        name: 'Nicolás Ruiz',
+        role: 'guitarra y coros',
+        imageUrl: null,
         order: 4,
-        published: true,
+        bandId: band.id,
       },
     }),
   ]);
+  console.log('✅ Band members:', members.length);
 
+  // 4️⃣ SEED: Evento AUTOS ROBADOS EN TUCUMÁN
+  const event = await prisma.event.upsert({
+    where: { slug: 'autos-robados-tucuman-2026' },
+    update: {},
+    create: {
+      name: 'AUTOS ROBADOS EN TUCUMÁN',
+      slug: 'autos-robados-tucuman-2026',
+      date: new Date('2026-04-24T21:00:00'),
+      location: 'Diva Rock, Barrio Norte',
+      address: 'Rivadavia 1320',
+      description: 'El evento de rock más esperado en Tucumán. AUTOS ROBADOS trae su sonido crudo y directo.',
+      imageUrl: '/fotos/foto-promo.jpg',
+      priceGeneral: 25000,
+      priceVip: null,
+      pricePreventa: 25000,
+      published: true,
+    },
+  });
+  console.log('✅ Event:', event.name);
+
+  // 5️⃣ SEED: Detalles del evento (1:1 con Event)
+  const eventDetails = await prisma.eventDetails.upsert({
+    where: { eventId: event.id },
+    update: {},
+    create: {
+      doorsOpen: '20:00',
+      showStart: '21:00',
+      showEnd: '23:59',
+      capacity: 500,
+      ageRestriction: 'ATP',
+      dressCode: 'Casual rock',
+      parkingInfo: 'Estacionamiento disponible en zona',
+      mapUrl: 'https://maps.app.goo.gl/o2PzfRmFsu99Vna49',
+      notes: 'Capacidad limitada. Boletería desde las 20:00 HS.',
+      eventId: event.id,
+    },
+  });
+  console.log('✅ Event Details:', eventDetails.id);
+
+  // 6️⃣ SEED: Relación Banda-Evento (BandEvent)
+  const bandEvent = await prisma.bandEvent.upsert({
+    where: {
+      bandId_eventId: {
+        bandId: band.id,
+        eventId: event.id,
+      },
+    },
+    update: {},
+    create: {
+      bandId: band.id,
+      eventId: event.id,
+      order: 1,
+      isHeadliner: true,
+    },
+  });
+  console.log('✅ Band-Event relation');
+
+  // 7️⃣ SEED: Imágenes de galería (6 reales del landing)
+  const galleryImages = await Promise.all([
+    prisma.galleryImage.upsert({
+      where: { id: 'img-promo-main' },
+      update: {},
+      create: {
+        id: 'img-promo-main',
+        title: 'Promo Principal',
+        imageUrl: '/fotos/foto-promo.jpg',
+        alt: 'AUTOS ROBADOS - Imagen Promocional',
+        order: 1,
+        category: 'promo',
+        published: true,
+        eventId: event.id,
+      },
+    }),
+    prisma.galleryImage.upsert({
+      where: { id: 'img-gallery-cuatro' },
+      update: {},
+      create: {
+        id: 'img-gallery-cuatro',
+        title: 'Galería 4',
+        imageUrl: '/fotos/gallery-cuatro.jpg',
+        alt: 'AUTOS ROBADOS - Galería',
+        order: 2,
+        category: 'live',
+        published: true,
+        eventId: event.id,
+      },
+    }),
+    prisma.galleryImage.upsert({
+      where: { id: 'img-gallery-uno' },
+      update: {},
+      create: {
+        id: 'img-gallery-uno',
+        title: 'Galería 1',
+        imageUrl: '/fotos/gallery-uno.jpg',
+        alt: 'AUTOS ROBADOS - Plano General',
+        order: 3,
+        category: 'live',
+        published: true,
+        eventId: event.id,
+      },
+    }),
+    prisma.galleryImage.upsert({
+      where: { id: 'img-gallery-tres' },
+      update: {},
+      create: {
+        id: 'img-gallery-tres',
+        title: 'Galería 3',
+        imageUrl: '/fotos/gallery-tres.jpg',
+        alt: 'AUTOS ROBADOS - Plano General',
+        order: 4,
+        category: 'live',
+        published: true,
+        eventId: event.id,
+      },
+    }),
+    prisma.galleryImage.upsert({
+      where: { id: 'img-gallery-dos' },
+      update: {},
+      create: {
+        id: 'img-gallery-dos',
+        title: 'Galería 2',
+        imageUrl: '/fotos/gallery-dos.jpg',
+        alt: 'AUTOS ROBADOS - Promo',
+        order: 5,
+        category: 'promo',
+        published: true,
+        eventId: event.id,
+      },
+    }),
+    prisma.galleryImage.upsert({
+      where: { id: 'img-gallery-cinco' },
+      update: {},
+      create: {
+        id: 'img-gallery-cinco',
+        title: 'Galería 5',
+        imageUrl: '/fotos/gallery-cinco.jpg',
+        alt: 'AUTOS ROBADOS - Plano General',
+        order: 6,
+        category: 'live',
+        published: true,
+        eventId: event.id,
+      },
+    }),
+  ]);
   console.log('✅ Gallery images:', galleryImages.length);
 
-  console.log('✨ Seed completado');
+  console.log('\n✨ 🎸 Seed completado exitosamente!');
+  console.log('\n📊 Resumen:');
+  console.log(`   • Event: ${event.name}`);
+  console.log(`   • Band: ${band.name} (${members.length} members)`);
+  console.log(`   • Gallery: ${galleryImages.length} images`);
+  console.log(`   • Date: ${event.date.toLocaleDateString('es-AR')}\n`);
 }
 
 main()
   .catch((e) => {
-    console.error(e);
+    console.error('❌ Seed error:', e);
     process.exit(1);
   })
   .finally(async () => {

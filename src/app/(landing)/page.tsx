@@ -8,6 +8,7 @@ import { GaleriaSection } from '@/components/landing/galeria-section';
 import { BannerPreventa } from '@/components/landing/banner-preventa';
 import { SobreNosotrosSection } from '@/components/landing/sobre-nosotros-section';
 import { InfoEventoSection } from '@/components/landing/info-evento-section';
+import { ContactFormSection } from '@/components/landing/contact-form-section';
 import { CountdownSection } from '@/components/landing/countdown-section';
 import { LandingFooter } from '@/components/landing/footer';
 
@@ -60,6 +61,9 @@ export default function LandingPage() {
 
       {/* Info Evento */}
       <InfoEventoSection />
+
+      {/* Contact Form */}
+      <ContactFormSection />
 
       {/* Footer */}
       <LandingFooter />

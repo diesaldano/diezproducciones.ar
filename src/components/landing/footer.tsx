@@ -8,7 +8,7 @@ export function LandingFooter() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Logos - Horizontal aligned equally */}
         <div className="flex flex-row items-center justify-center gap-8 sm:gap-12 mb-12">
-          <div className="relative w-20 h-20 sm:w-24 sm:h-24 flex-shrink-0">
+          <div className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 flex-shrink-0">
             <Image
               src="/diezb.png"
               alt="Diez Producciones"
@@ -18,8 +18,8 @@ export function LandingFooter() {
               className="object-contain brightness-0 invert"
             />
           </div>
-          <div className="w-px h-20 sm:h-24 bg-gradient-to-b from-transparent via-gray-700 to-transparent flex-shrink-0"></div>
-          <div className="relative w-20 h-20 sm:w-24 sm:h-24 flex-shrink-0">
+          <div className="w-px h-20 sm:h-24 md:h-28 bg-gradient-to-b from-transparent via-gray-700 to-transparent flex-shrink-0"></div>
+          <div className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 flex-shrink-0">
             <Image
               src="/salamancab.png"
               alt="Salamanca Producciones"

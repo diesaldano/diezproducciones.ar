@@ -56,8 +56,15 @@ export default async function AdminDashboardPage() {
           icon="🖼️"
           label="Galería"
           value={analytics.gallery}
-          detail={`${analytics.drinks} bebidas configuradas`}
+          detail="Imágenes subidas"
         />
+        {/* Bebidas manejadas en Preventa - Oculto del admin */}
+        {/* <StatCard
+          icon="🍺"
+          label="Bebidas"
+          value={analytics.drinks}
+          detail="Bebidas configuradas"
+        /> */}
       </div>
 
       {/* Upcoming Events */}

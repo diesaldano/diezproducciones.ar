@@ -3,11 +3,12 @@ import { cookies } from 'next/headers';
 const ADMIN_SESSION_COOKIE = 'admin_session';
 
 /**
- * Dev credentials — replace with real auth (e.g. NextAuth) when ready
+ * Admin credentials from env variables
+ * Never hardcode credentials - use environment variables
  */
 const DEV_CREDENTIALS = {
-  email: 'admin@diezproducciones.ar',
-  password: 'diez2026',
+  email: process.env.ADMIN_EMAIL || 'admin@diezproducciones.ar',
+  password: process.env.ADMIN_PASSWORD || 'diez2026',
 };
 
 export async function validateCredentials(email: string, password: string): Promise<boolean> {
