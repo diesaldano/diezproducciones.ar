@@ -12,13 +12,15 @@ export async function GET(
   try {
     const { slug } = await params;
 
-    // Find event by slug first to get the ID
-    const event = await prisma.event.findFirst({
-      where: { slug },
-      select: { id: true },
-    });
-
-    if (!event) {
+    // Find event by slug to get the ID
+    let eventId: string;
+    try {
+      const event = await prisma.event.findUniqueOrThrow({
+        where: { slug },
+        select: { id: true },
+      });
+      eventId = event.id;
+    } catch (error) {
       return NextResponse.json(
         { error: 'Event not found' },
         { status: 404 }
@@ -27,7 +29,7 @@ export async function GET(
 
     const images = await prisma.galleryImage.findMany({
       where: {
-        eventId: event.id,
+        eventId,
         published: true,
       },
       orderBy: { order: 'asc' },
