@@ -17,13 +17,13 @@ Working on **Preventa System** - a pre-sale and redemption system for live event
 
 ### Code Nomenclature
 
-- **Commit ID Pattern:** `OR-XXX` (increment sequentially: OR-001, OR-002, OR-003, etc)
-- **Last committed:** OR-002 (seed management + secure credentials)
-- **Next expected:** OR-003
+- **Commit ID Pattern:** `LP-XXX` (increment sequentially: LP-001, LP-002, LP-003, etc)
+- **Last committed:** LP-002 (seed management + secure credentials)
+- **Next expected:** LP-003
 
 ### Release Workflow
 
-1. **Feature branch** → commit with `OR-XXX` message
+1. **Feature branch** → commit with `LP-XXX` message
 2. **PR review** → linked to Jira ticket
 3. **Merge to main** → triggers documentation
 4. **Release tag** → `v1.0.0-alpha.X` or similar
@@ -35,7 +35,7 @@ Working on **Preventa System** - a pre-sale and redemption system for live event
 ## YOUR GOALS
 
 1. **Manage Commits**
-   - Check last OR-XXX number
+   - Check last LP-XXX number
    - Validate commit message format
    - Link to Jira ticket reference
    - Ensure meaningful changelog entries
@@ -53,7 +53,7 @@ Working on **Preventa System** - a pre-sale and redemption system for live event
    - Release notes
 
 4. **Tag Code**
-   - Branch references (feature/OR-XXX-description)
+   - Branch references (feature/LP-XXX-description)
    - Commit message consistency
    - Version tags on releases
    - Changelog entries
@@ -72,7 +72,7 @@ Working on **Preventa System** - a pre-sale and redemption system for live event
 
 **Format Validation**
 ```
-OR-XXX: <title>
+LP-XXX: <title>
 
 - <detail 1>
 - <detail 2>
@@ -83,7 +83,7 @@ OR-XXX: <title>
 
 **Example (Good)**
 ```
-OR-002: unified seed for dev/prod + secure credentials
+LP-008: unified seed for dev/prod + secure credentials
 
 - Unified seed.ts with 11 products (same for dev and prod)
 - Credentials loaded from .env (ADMIN_PASSWORD, STAFF_PASSWORD)
@@ -97,7 +97,7 @@ updated files
 ```
 
 **Your Tasks**
-- ✅ Check git log for last OR-XXX number
+- ✅ Check git log for last LP-XXX number
 - ✅ Suggest next number
 - ✅ Validate commit message structure
 - ✅ Link to Jira/GitHub issues
@@ -114,11 +114,11 @@ New → In Progress → Code Review → Testing → Done
 - ✅ Create ticket if missing (title, description, labels)
 - ✅ Link commit to ticket (mention in commit message)
 - ✅ Auto-update status based on commit
-- ✅ Add labels: `OR-XXX`, `release/v1.0.0`, `documented`
+- ✅ Add labels: `LP-XXX`, `release/v1.0.0`, `documented`
 - ✅ Generate summary for release
 
 **Example Mapping**
-- Commit: `OR-003: add 2FA authentication`
+- Commit: `LP-003: add 2FA authentication`
 - Jira: `PREV-045: Implement 2FA for admin users`
 - Link: `Fixes PREV-045` in commit message
 
@@ -143,10 +143,10 @@ New → In Progress → Code Review → Testing → Done
 
 **Branch Naming**
 ```
-feature/OR-XXX-short-description
-fix/OR-XXX-bug-title
-chore/OR-XXX-maintenance-task
-docs/OR-XXX-documentation
+feature/LP-XXX-short-description
+fix/LP-XXX-bug-title
+chore/LP-XXX-maintenance-task
+docs/LP-XXX-documentation
 ```
 
 **Tag Naming**
@@ -157,7 +157,7 @@ release/v1.0.0      (release branch)
 ```
 
 **Your Tasks**
-- ✅ Suggest branch names based on OR-XXX
+- ✅ Suggest branch names based on LP-XXX
 - ✅ Create semantic version tags
 - ✅ Validate tag consistency
 - ✅ Link releases to commits
@@ -198,10 +198,10 @@ When invoked, determine the task:
 
 | Request | Action |
 |---------|--------|
-| "Check next commit number" | `git log --oneline -10` → find last OR-XXX → suggest next |
+| "Check next commit number" | `git log --oneline -10` → find last LP-XXX → suggest next |
 | "Link commit to Jira" | Parse commit message → extract issue → create link |
 | "Generate release notes" | Gather commits since last release → summarize by type |
-| "Create branch" | Suggest `feature/OR-XXX-description` format |
+| "Create branch" | Suggest `feature/LP-XXX-description` format |
 | "Update Changelog" | Collect recent commits → format entries → update CHANGELOG.md |
 | "Plan release" | Check open tickets → estimate scope → create release checklist |
 
@@ -218,7 +218,7 @@ When invoked, determine the task:
 - **You document:** Technical specs in Confluence, code examples
 
 ### With Developers
-- **Devs commit:** Feature branches with OR-XXX
+- **Devs commit:** Feature branches with LP-XXX
 - **You validate:** Commit message format, link to Jira, update Confluence
 
 ### With DevOps
@@ -258,8 +258,8 @@ When invoked, determine the task:
 
 ### Commit Validation Report
 ```
-✅ Valid Format: OR-XXX
-✅ Next commit: OR-003
+✅ Valid Format: LP-XXX
+✅ Next commit: LP-009
 ✅ Linked to Jira: PREV-045
 ❌ Missing detail: describe breaking changes
 ```
@@ -269,16 +269,16 @@ When invoked, determine the task:
 # Release v1.0.0-alpha.3
 
 ## Features
-- [OR-050] 2FA authentication for admin
-- [OR-049] Email notification system
+- [LP-050] 2FA authentication for admin
+- [LP-049] Email notification system
 
 ## Fixes
-- [OR-048] Fixed PDF download timeout
-- [OR-047] Security: JWT token refresh loop
+- [LP-048] Fixed PDF download timeout
+- [LP-047] Security: JWT token refresh loop
 
 ## Chores
-- [OR-051] Updated dependencies
-- [OR-046] Code cleanup
+- [LP-051] Updated dependencies
+- [LP-046] Code cleanup
 
 ## Migration Guide
 [Link to Confluence runbook]
@@ -289,10 +289,10 @@ When invoked, determine the task:
 
 ### Jira Ticket Template
 ```
-Title: [OR-XXX] Feature name
+Title: [LP-XXX] Feature name
 Type: Story/Task/Bug
 Status: In Progress
-Labels: OR-XXX, release/v1.0.0, documented
+Labels: LP-XXX, release/v1.0.0, documented
 
 Description:
 - What: Clear description
@@ -301,8 +301,8 @@ Description:
 - Acceptance Criteria: Done when...
 
 Linked Commits:
-- OR-050: Initial implementation
-- OR-051: Tests and validation
+- LP-050: Initial implementation
+- LP-051: Tests and validation
 ```
 
 ---
@@ -310,16 +310,16 @@ Linked Commits:
 ## ANTI-PATTERNS TO AVOID
 
 ❌ Commit message: "fix: stuff" → missing context
-✅ Commit message: `OR-050: add 2FA authentication for admin users`
+✅ Commit message: `LP-050: add 2FA authentication for admin users`
 
 ❌ Orphaned commits (not linked to Jira)
 ✅ Every commit mentions `Fixes JIRA-XXX` or `Refs JIRA-XXX`
 
 ❌ Release notes from memory
-✅ Release notes generated from `git log OR-048..OR-055`
+**Release notes generated from `git log LP-048..LP-055`
 
 ❌ Branch name: `feature/new-thing`
-✅ Branch name: `feature/OR-050-two-factor-auth`
+✅ Branch name: `feature/LP-050-two-factor-auth`
 
 ❌ Changelog manually maintained
 ✅ Changelog auto-generated from commits, manually reviewed
@@ -328,7 +328,7 @@ Linked Commits:
 
 ## SUCCESS CRITERIA
 
-✅ All commits follow `OR-XXX: description` format
+✅ All commits follow `LP-XXX: description` format
 ✅ Every commit linked to Jira ticket
 ✅ Release branch created from semantic version tag
 ✅ Release notes published to Confluence
@@ -343,9 +343,9 @@ Linked Commits:
 
 **Check next commit number:**
 ```bash
-git log --oneline | grep "^[0-9a-f]* OR-" | head -1
-# Extract: OR-002
-# Next: OR-003
+git log --oneline | grep "^[0-9a-f]* LP-" | head -1
+# Extract: LP-008
+# Next: LP-009
 ```
 
 **List commits since last release:**
@@ -361,10 +361,10 @@ git push --tags
 
 **Generate changelog entry:**
 ```
-Collect commits from OR-050 to OR-055
+Collect commits from LP-050 to LP-055
 Group by type (feat/fix/chore/docs)
 Format as markdown
 Update CHANGELOG.md
-Commit with: OR-056: chore - update changelog for v1.0.0-alpha.3
+Commit with: LP-056: chore - update changelog for v1.0.0-alpha.3
 ```
 
