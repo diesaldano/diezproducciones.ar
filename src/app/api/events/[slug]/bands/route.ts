@@ -13,7 +13,7 @@ export async function GET(
     const { slug } = await params;
 
     // Find event by slug first to get the ID
-    const event = await prisma.event.findUnique({
+    const event = await prisma.event.findFirst({
       where: { slug },
       select: { id: true },
     });
