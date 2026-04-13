@@ -13,19 +13,19 @@ export async function GET(
     const { slug } = await params;
 
     // Find event by slug to get the ID
-    let eventId: string;
-    try {
-      const event = await prisma.event.findUniqueOrThrow({
-        where: { slug },
-        select: { id: true },
-      });
-      eventId = event.id;
-    } catch (error) {
+    const event = await prisma.event.findFirst({
+      where: { slug },
+      select: { id: true },
+    });
+
+    if (!event) {
       return NextResponse.json(
         { error: 'Event not found' },
         { status: 404 }
       );
     }
+
+    const eventId = event.id;
 
     const images = await prisma.galleryImage.findMany({
       where: {
