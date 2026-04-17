@@ -33,13 +33,13 @@ export const viewport: Viewport = {
 // Complete SEO metadata
 export const metadata: Metadata = {
   metadataBase: new URL("https://diezproducciones.ar"),
-  title: "DIEZ PRODUCCIONES - Autos Robados | Preventa de Entradas y Bebidas",
-  description: "Conocé a Autos Robados en vivo. Sonido crudo, sin filtro. Entradas y bebidas en preventa. Diez Producciones presenta.",
+  title: "DIEZ PRODUCCIONES - Autos Robados | Entradas y Bebidas",
+  description: "Conocé a Autos Robados en vivo. Sonido crudo, sin filtro. Entradas y bebidas disponibles. Diez Producciones presenta.",
   keywords: [
     "Autos Robados",
     "concierto",
     "rock",
-    "preventa",
+    "entradas",
     "bebidas",
     "Diez Producciones",
     "evento en vivo",
@@ -71,8 +71,8 @@ export const metadata: Metadata = {
     locale: "es_AR",
     url: "https://diezproducciones.ar",
     siteName: "Diez Producciones",
-    title: "DIEZ PRODUCCIONES - Autos Robados | Preventa",
-    description: "Sonido crudo, sin filtro. Escena independiente que mueve. Entradas y bebidas en preventa.",
+    title: "DIEZ PRODUCCIONES - Autos Robados | Entradas",
+    description: "Sonido crudo, sin filtro. Escena independiente que mueve. Entradas y bebidas disponibles.",
     images: [
       {
         url: "/fotos/foto-promo.jpg",
@@ -87,7 +87,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@diezproducciones.ar",
     creator: "@diezproducciones.ar",
-    title: "DIEZ PRODUCCIONES - Autos Robados | Preventa",
+    title: "DIEZ PRODUCCIONES - Autos Robados | Entradas",
     description: "Sonido crudo, sin filtro. Escena independiente que mueve.",
     images: ["/fotos/foto-promo.jpg"],
   },

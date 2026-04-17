@@ -34,7 +34,7 @@ export function SobreNosotrosSection() {
                 Desde hace años organizamos las mejores experiencias de rock argentino. Bandas sin filtro, público apasionado, y un ambiente que te marca para siempre. Estamos enfocados en hacer de cada evento un momento único que trascienda.
               </p>
               <p className="text-base">
-                En esta Preventa vas a encontrar bebidas al mejor precio, sin complicaciones. Solo gente real disfrutando de lo que ama, en el lugar indicado en el momento indicado.
+                En este evento vas a encontrar bebidas al mejor precio, sin complicaciones. Solo gente real disfrutando de lo que ama, en el lugar indicado en el momento indicado.
               </p>
             </div>
 

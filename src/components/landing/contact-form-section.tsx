@@ -9,8 +9,7 @@ export function ContactFormSection() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    subject: 'compra-credencial',
-    otherSubject: '',
+    subject: '',
     message: '',
   });
 
@@ -46,12 +45,6 @@ export function ContactFormSection() {
     }
   }, []);
 
-  const subjectOptions = [
-    { value: 'compra-credencial', label: 'Compra de credencial de acceso' },
-    { value: 'compra-refrigeracion', label: 'Compra de refrigeración' },
-    { value: 'otro', label: 'Otro asunto' },
-  ];
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -69,8 +62,8 @@ export function ContactFormSection() {
       return false;
     }
 
-    if (formData.subject === 'otro' && !formData.otherSubject.trim()) {
-      setErrorMessage('Especifica el asunto');
+    if (!formData.subject.trim()) {
+      setErrorMessage('El asunto es requerido');
       return false;
     }
 
@@ -100,7 +93,7 @@ export function ContactFormSection() {
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
-          subject: formData.subject === 'otro' ? formData.otherSubject : formData.subject,
+          subject: formData.subject,
           message: formData.message,
         }),
       });
@@ -114,7 +107,7 @@ export function ContactFormSection() {
       }
 
       setStatus('success');
-      setFormData({ name: '', email: '', subject: 'compra-credencial', otherSubject: '', message: '' });
+      setFormData({ name: '', email: '', subject: '', message: '' });
 
       // Reset success message after 5 seconds
       setTimeout(() => setStatus('idle'), 5000);
@@ -175,43 +168,21 @@ export function ContactFormSection() {
               />
             </div>
 
-            {/* Subject Select */}
+            {/* Subject */}
             <div>
               <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">
                 Asunto
               </label>
-              <select
+              <input
+                type="text"
                 id="subject"
                 name="subject"
                 value={formData.subject}
                 onChange={handleChange}
-                className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 text-white rounded-lg focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500/50 transition-all duration-300"
-              >
-                {subjectOptions.map((opt) => (
-                  <option key={opt.value} value={opt.value}>
-                    {opt.label}
-                  </option>
-                ))}
-              </select>
+                placeholder="Escribe el asunto de tu consulta"
+                className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 text-white placeholder-gray-500 rounded-lg focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500/50 transition-all duration-300"
+              />
             </div>
-
-            {/* Other Subject (conditional) */}
-            {formData.subject === 'otro' && (
-              <div>
-                <label htmlFor="otherSubject" className="block text-sm font-medium text-gray-300 mb-2">
-                  Especifica tu asunto
-                </label>
-                <input
-                  type="text"
-                  id="otherSubject"
-                  name="otherSubject"
-                  value={formData.otherSubject}
-                  onChange={handleChange}
-                  placeholder="Describe tu asunto"
-                  className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 text-white placeholder-gray-500 rounded-lg focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500/50 transition-all duration-300"
-                />
-              </div>
-            )}
 
             {/* Message */}
             <div>

@@ -17,7 +17,7 @@ export function EventHero({
   subtitle,
   videoUrl,
   posterUrl,
-  ctaLabel = 'IR A PREVENTA',
+  ctaLabel = 'COMPRAR ENTRADAS',
   ctaHref = '/checkout',
 }: EventHeroProps) {
   const videoRef = useRef<HTMLVideoElement>(null);

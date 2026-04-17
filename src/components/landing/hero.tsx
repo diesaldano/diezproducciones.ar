@@ -130,9 +130,11 @@ export function HeroSection() {
         </p>
 
         <a
-          href={config.preventaUrl}
+          href="https://norteticket.com/AUTOS-ROBADOS-EN-TUCUMAN-2026/"
           ref={ctaRef}
           onClick={() => trackCtaClick('hero_cta', 'comprar_bebidas')}
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-block bg-amber-500 hover:bg-amber-600 active:bg-amber-700 text-slate-950 font-montserrat font-bold py-3 sm:py-4 px-8 sm:px-10 rounded-lg transition-all duration-200 hover:scale-105 active:scale-95 text-base sm:text-lg drop-shadow-lg"
         >
           COMPRAR BEBIDAS

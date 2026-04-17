@@ -47,11 +47,13 @@ export function PreventaBannerSection() {
         </p>
 
         <a 
-          href={config.preventaUrl}
+          href="https://norteticket.com/AUTOS-ROBADOS-EN-TUCUMAN-2026/"
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-block bg-black hover:bg-gray-900 text-amber-400 font-bold py-4 px-8 rounded-lg transition-all duration-300 hover:scale-105 active:scale-95 text-lg mx-auto"
         >
           <span className="flex items-center gap-2">
-            IR A PREVENTA
+            COMPRAR ENTRADAS
             <ArrowRight size={24} />
           </span>
         </a>

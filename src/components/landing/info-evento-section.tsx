@@ -23,7 +23,7 @@ export function InfoEventoSection() {
       title: 'ENTRADA',
       content: ['$25.000', 'Capacidad limitada'],
       link: 'COMPRAR',
-      href: config.preventaUrl,
+      href: 'https://norteticket.com/AUTOS-ROBADOS-EN-TUCUMAN-2026/',
       target: '_blank',
     },
     {

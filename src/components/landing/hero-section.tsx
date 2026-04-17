@@ -68,11 +68,13 @@ export function HeroSection() {
           24 de Abril Diva Rock.
         </p>
         <a 
-          href={config.preventaUrl}
+          href="https://norteticket.com/AUTOS-ROBADOS-EN-TUCUMAN-2026/"
           className="inline-block bg-amber-500 hover:bg-amber-600 text-black font-montserrat font-bold py-3 px-8 rounded-lg transition-all duration-200 text-lg min-h-12 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-amber-300 focus:ring-offset-2"
-          aria-label="Ir a preventa de AUTOS ROBADOS en Diva Rock"
+          aria-label="Comprar entradas de AUTOS ROBADOS en Diva Rock"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          IR A PREVENTA
+          COMPRAR ENTRADAS
         </a>
       </div>
     </section>

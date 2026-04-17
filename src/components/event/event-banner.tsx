@@ -10,7 +10,7 @@ type EventBannerProps = {
 export function EventBanner({
   title = 'QUIERO ENTRADAS + BEBIDAS',
   subtitle = '⚡ Capacidad limitada · Anticipate, evita filas y obtené mejor precio',
-  ctaLabel = 'IR A PREVENTA →',
+  ctaLabel = 'COMPRAR ENTRADAS →',
   ctaHref = '/checkout',
 }: EventBannerProps) {
   return (

@@ -11,7 +11,7 @@ function formatPrice(price: number): string {
   return `$${price.toLocaleString('es-AR')}`;
 }
 
-export function EventDrinks({ drinks, title = 'BEBIDAS EN PREVENTA' }: EventDrinksProps) {
+export function EventDrinks({ drinks, title = 'BEBIDAS DISPONIBLES' }: EventDrinksProps) {
   const available = drinks.filter((d) => d.available);
   if (available.length === 0) return null;
 
